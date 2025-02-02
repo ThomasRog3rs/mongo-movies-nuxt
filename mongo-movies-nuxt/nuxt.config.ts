@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       API_ROOT: process.env.API_ROOT,
+      NUXT_ENV_NAME: process.env.NUXT_ENV_NAME
     },
   },
   css: [
