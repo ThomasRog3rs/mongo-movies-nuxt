@@ -9,14 +9,14 @@
   import { useHead } from '#app';
   
   useHead({
-    title: 'Mooring Pin - search for the marinas you need',
+    title: 'Mongo Movies - find the movies you want',
     htmlAttrs: {
       lang: 'en-GB'
     },
     meta: [
-      { name: 'description', content: 'Mooring Pin allows you to search for marinas, in the area you need with the services you want' },
-      { property: 'og:title', content: 'Mooring Pin' },
-      { property: 'og:description', content: 'Mooring Pin - search for marinas, in the area you need with the services you want' },
+      { name: 'description', content: 'Mongo Movies allows you to view and add movies' },
+      { property: 'og:title', content: 'Mongo movies' },
+      { property: 'og:description', content: 'Mongo movies' },
       { property: 'og:image', content: '/_nuxt/assets/images/og-image.png' },
       { property: 'og:type', content: 'website' },
       { name: 'robots', content: 'index, follow' },
