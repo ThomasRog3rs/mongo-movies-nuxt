@@ -13,7 +13,7 @@ interface Movie {
   posterUrl: string;
 }
 
-const { data, pending, error } = await useAsyncData<Movie[]>(
+const { data, error } = await useAsyncData<Movie[]>(
   'movies',
   async () => {
     const response = await fetch(`${useRuntimeConfig().public.API_ROOT}/get-all-movies`);
@@ -24,26 +24,22 @@ const { data, pending, error } = await useAsyncData<Movie[]>(
   }
 );
 
-const movies = data ?? [];
+const movies : Array<Movie> = data.value as Array<Movie> ?? Array<Movie>;
 </script>
 
 <template>
   <div class="container mx-auto p-4">
     <h1 class="text-4xl font-bold mb-6">Movies</h1>
 
-    <div v-if="pending">
-      <p>Loading movies...</p>
-    </div>
-
     <div v-if="error">
       <p>Error fetching movies: {{ error.message }}</p>
     </div>
 
-    <div v-if="!pending && (!movies || movies.length === 0)">
+    <div v-if="!error && (!movies || movies.length === 0)">
       <p>No movies available. Please try again later.</p>
     </div>
 
-    <div v-if="!pending && movies && movies.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div v-if="!error && movies?.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
         v-for="movie in movies"
         :key="movie._id"
